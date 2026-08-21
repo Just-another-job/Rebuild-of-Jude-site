@@ -1,0 +1,811 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AxisEV Ã¢â‚¬â€ Drive the Future. Own It Now.</title>
+  <meta name="description" content="AxisEV is your trusted EV referral partner. Explore premium electric vehicles Ã¢â‚¬â€ trucks, SUVs, and sedans Ã¢â‚¬â€ at exclusive rates. Connect with a specialist today." />
+  <meta name="keywords" content="electric vehicles, EV referral, electric truck, electric SUV, AxisEV, buy EV Nigeria" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="AxisEV" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="AxisEV Ã¢â‚¬â€ Drive the Future. Own It Now." />
+  <meta property="og:description" content="Nigeria's leading EV referral platform. Premium electric vehicles at exclusive rates." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://edgesync.pages.dev/" />
+  <meta property="og:image" content="assets/images/hero/AWD Electric Truck-hero.jpg" />
+  <meta property="og:site_name" content="AxisEV" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="AxisEV Ã¢â‚¬â€ Drive the Future." />
+  <meta name="twitter:description" content="Premium electric vehicles at exclusive referral rates." />
+  <meta name="twitter:image" content="assets/images/hero/AWD Electric Truck-hero.jpg" />
+
+  <!-- Theme -->
+  <meta name="theme-color" content="hsl(220, 30%, 8%)" />
+
+  <!-- Favicon (inline SVG Ã¢â‚¬â€ no external dependency) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230d1117'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='system-ui,sans-serif' font-weight='700' font-size='16' fill='%2322d3c8'%3EAX%3C/text%3E%3C/svg%3E" />
+  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230d1117'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='system-ui,sans-serif' font-weight='700' font-size='16' fill='%2322d3c8'%3EAX%3C/text%3E%3C/svg%3E" />
+  <link rel="manifest" href="manifest.json" />
+
+  <!-- Preconnect for fonts only -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+
+  <!-- Preload hero -->
+  <link rel="preload" as="image" href="assets/images/hero/cybertruck-evening.jpg" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/megamenu.css" />
+  <link rel="stylesheet" href="css/sections.css" />
+  <link rel="stylesheet" href="css/shop.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/chat.css" />
+
+  <!-- Appwrite SDK (neutral third-party) -->
+  <script src="https://cdn.jsdelivr.net/npm/appwrite@14.0.1/dist/iife/sdk.min.js" defer></script>
+
+  <!-- JSON-LD: Original AxisEV Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "AxisEV",
+    "url": "https://edgesync.pages.dev",
+    "description": "Nigeria's leading electric vehicle referral platform",
+    "logo": "https://edgesync.pages.dev/assets/images/hero/AWD Electric Truck-hero.jpg",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer support",
+      "availableLanguage": "English"
+    }
+  }
+  </script>
+</head>
+
+<body class="promo-visible">
+
+  <!-- PROMO BANNER -->
+  <div id="promo-banner" role="banner" aria-label="Promotional offer">
+    <div class="promo-banner__inner">
+      <span class="promo-banner__text">
+        Trade in your current vehicle and unlock exclusive EV pricing Ã¢â‚¬â€ limited time
+      </span>
+      <a href="#order-cta" class="promo-banner__cta" id="promo-cta-btn">Get a Trade-In Estimate</a>
+      <button class="promo-banner__close" id="promo-close" aria-label="Dismiss banner">
+        <svg width="12" height="12" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- NAVIGATION -->
+  <nav id="main-nav" class="nav--transparent" role="navigation" aria-label="Main navigation">
+
+    <!-- Brand Logo -->
+    <a href="/" class="nav__logo" aria-label="AxisEV Home">
+      <div class="nav__logo-svg">
+        <span class="nav__logo-axis">Axis</span><span class="nav__logo-ev">EV</span>
+      </div>
+    </a>
+
+    <!-- Desktop Nav Links -->
+    <div class="nav__links" role="menubar">
+      <div class="nav__item" data-menu="vehicles">
+        <a href="#" class="nav__link" role="menuitem">Vehicles</a>
+      </div>
+      <div class="nav__item" data-menu="energy">
+        <a href="#" class="nav__link" role="menuitem">Energy</a>
+      </div>
+      <div class="nav__item" data-menu="charging">
+        <a href="#" class="nav__link" role="menuitem">Charging</a>
+      </div>
+      <div class="nav__item" data-menu="discover">
+        <a href="#" class="nav__link" role="menuitem">Discover</a>
+      </div>
+      <div class="nav__item" data-menu="shopnav">
+        <a href="#shop" class="nav__link" role="menuitem">Shop</a>
+      </div>
+    </div>
+
+    <!-- Mega Menus -->
+    <div class="mega-menu-backdrop"></div>
+
+    <div class="mega-menu" id="mega-vehicles">
+      <div class="mega-menu__container">
+        <div class="mega-menu__grid">
+          <a href="#shop" class="mega-item">
+            <img src="assets/images/nav/RWD Electric Truck.jpg" alt="RWD Electric Truck electric truck" loading="lazy">
+            <h3>Cybertruck RWD</h3>
+            <div class="mega-links"><span>Learn</span><span id="mm-order-RWD Electric Truck">Enquire</span></div>
+          </a>
+          <a href="#shop" class="mega-item">
+            <img src="assets/images/nav/AWD Electric Truck.jpg" alt="AWD Electric Truck electric truck" loading="lazy">
+            <h3>Cybertruck All-Wheel Drive</h3>
+            <div class="mega-links"><span>Learn</span><span id="mm-order-AWD Electric Truck">Enquire</span></div>
+          </a>
+          <a href="#shop" class="mega-item">
+            <img src="assets/images/nav/apex-suv.jpg" alt="AWD Electric Crossover electric crossover" loading="lazy">
+            <h3>Model Y</h3>
+            <div class="mega-links"><span>Learn</span><span id="mm-order-apex">Enquire</span></div>
+          </a>
+          <a href="#shop" class="mega-item">
+            <img src="assets/images/nav/apex-xl.jpg" alt="Luxury Electric SUV luxury electric SUV" loading="lazy">
+            <h3>Model X</h3>
+            <div class="mega-links"><span>Learn</span><span id="mm-order-apex-xl">Enquire</span></div>
+          </a>
+        </div>
+        <div class="mega-menu__list">
+          <a href="#order-cta">Current Offers</a>
+          <a href="#order-cta">Book a Test Drive</a>
+          <a href="#order-cta">Trade-In</a>
+          <a href="#specs">Compare Models</a>
+          <a href="#order-cta">Financing Options</a>
+          <a href="#order-cta">Pre-Owned</a>
+          <a href="#specs">Specifications</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mega-menu" id="mega-energy">
+      <div class="mega-menu__container">
+        <div class="mega-menu__grid">
+          <a href="#" class="mega-item" onclick="Utils.showToast('Energy products Ã¢â‚¬â€ speak to a specialist'); return false;">
+            <img src="assets/images/nav/solar-panels.jpg" alt="Solar panels" loading="lazy">
+            <h3>Solar Panels</h3>
+            <div class="mega-links"><span>Learn</span><span>Enquire</span></div>
+          </a>
+          <a href="#" class="mega-item" onclick="Utils.showToast('Energy products Ã¢â‚¬â€ speak to a specialist'); return false;">
+            <img src="assets/images/nav/wall-charger.jpg" alt="Home energy storage" loading="lazy">
+            <h3>Home Storage</h3>
+            <div class="mega-links"><span>Learn</span><span>Enquire</span></div>
+          </a>
+        </div>
+        <div class="mega-menu__list">
+          <a href="#order-cta">Schedule Consultation</a>
+          <a href="#order-cta">Why Go Solar</a>
+          <a href="#order-cta">Incentives</a>
+          <a href="#order-cta">Commercial</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mega-menu" id="mega-charging">
+      <div class="mega-menu__container">
+        <div class="mega-menu__grid">
+          <a href="#shop" class="mega-item">
+            <img src="assets/images/nav/wall-charger.jpg" alt="Home charging" loading="lazy">
+            <h3>Home Charging</h3>
+            <div class="mega-links"><span>Learn</span><span>Shop</span></div>
+          </a>
+          <a href="#" class="mega-item" onclick="Utils.showToast('Find a charging station near you'); return false;">
+            <img src="assets/images/nav/fast-charger.jpg" alt="Fast charge network" loading="lazy">
+            <h3>Fast Charge Network</h3>
+            <div class="mega-links"><span>Find</span></div>
+          </a>
+        </div>
+        <div class="mega-menu__list">
+          <a href="#order-cta">Charging Guide</a>
+          <a href="#order-cta">Range Calculator</a>
+          <a href="#order-cta">Charging Standards</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mega-menu" id="mega-discover">
+      <div class="mega-menu__container">
+        <div class="mega-menu__grid mega-menu__grid-col">
+          <div class="mega-menu__list-group">
+            <h3 class="list-heading">Resources</h3>
+            <a href="#order-cta">Book a Test Drive</a>
+            <a href="#order-cta">EV Insurance</a>
+            <a href="#order-cta">Buyer's Guide</a>
+            <a href="#order-cta">Customer Stories</a>
+            <a href="#order-cta">Events</a>
+          </div>
+          <div class="mega-menu__list-group">
+            <h3 class="list-heading">Support</h3>
+            <a href="#order-cta">Find a Specialist</a>
+            <a href="#order-cta">Service Centres</a>
+            <a href="#order-cta">Certified Installers</a>
+          </div>
+          <div class="mega-menu__list-group">
+            <h3 class="list-heading">Company</h3>
+            <a href="#order-cta">About AxisEV</a>
+            <a href="#order-cta">Partnerships</a>
+            <a href="#order-cta">Contact Us</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mega-menu" id="mega-shopnav">
+      <div class="mega-menu__container">
+        <div class="mega-menu__grid">
+          <a href="#shop" class="mega-item">
+            <img src="assets/images/nav/wall-charger.jpg" alt="Charging accessories" loading="lazy">
+            <h3>Charging</h3>
+          </a>
+          <a href="#shop" class="mega-item">
+            <img src="assets/images/shop/accessories/crossbars.jpg" alt="Vehicle accessories" loading="lazy">
+            <h3>Accessories</h3>
+          </a>
+          <a href="#shop" class="mega-item">
+            <img src="assets/images/shop/apparel/hoodie.jpg" alt="Apparel" loading="lazy">
+            <h3>Apparel</h3>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Actions -->
+    <div class="nav__actions">
+      <button class="nav__action-btn" aria-label="Help" onclick="Utils.showToast('How can we help? Use the chat button below!')">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      </button>
+      <button class="nav__action-btn" aria-label="Language" onclick="Utils.showToast('Currently available in English')">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      </button>
+      <!-- Hamburger -->
+      <button class="nav__hamburger nav__action-btn" id="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="nav__mobile-menu" id="mobile-menu" role="dialog" aria-label="Navigation menu">
+      <nav class="nav__mobile-links">
+        <a href="#specs" class="nav__mobile-link">Vehicles</a>
+        <a href="#" class="nav__mobile-link" onclick="Utils.showToast('Energy products coming soon'); return false;">Energy</a>
+        <a href="#shop" class="nav__mobile-link">Charging</a>
+        <a href="#hero" class="nav__mobile-link">Discover</a>
+        <a href="#shop" class="nav__mobile-link">Shop</a>
+        <a href="#order-cta" class="nav__mobile-link">Contact Us</a>
+      </nav>
+    </div>
+  </nav>
+
+  <!-- Overlay -->
+  <div class="overlay" id="nav-overlay"></div>
+
+  <!-- HERO -->
+  <section id="hero" aria-label="AWD Electric Truck Hero">
+    <div class="hero__bg" id="hero-bg" role="img" aria-label="AxisEV AWD Electric Truck electric truck on rocky terrain at dusk"></div>
+    <div class="hero__gradient"></div>
+
+    <div class="hero__content">
+      <div class="hero__brand-tag reveal">AxisEV Exclusive Ã‚Â· Limited Allocation</div>
+      <h1 class="hero__title reveal reveal-delay-1">
+        CYBER<br><span class="hero__title-accent">TRUCK</span>
+      <p class="hero__subtitle reveal reveal-delay-2">Dual Motor AWD · From $80,500 · Lease From $790/mo</p>
+      
+      <div class="hero__ctas reveal reveal-delay-3">
+        <button class="btn btn--primary" id="hero-enquire-btn">Enquire Now</button>
+        <a href="#specs" class="btn btn--ghost" id="hero-compare-btn">Compare Models</a>
+      </div>
+    </div>
+
+    <div class="hero__stats" role="list" aria-label="Key specifications">
+      <div class="hero__stat" role="listitem">
+        <span class="hero__stat-value">5-Star</span>
+        <span class="hero__stat-label">Safety Rating</span>
+      </div>
+      <div class="hero__stat" role="listitem">
+        <span class="hero__stat-value">325 mi</span>
+        <span class="hero__stat-label">Range (est.)</span>
+      </div>
+      <div class="hero__stat" role="listitem">
+        <span class="hero__stat-value">11,000 lbs</span>
+        <span class="hero__stat-label">Towing</span>
+      </div>
+      <div class="hero__stat" role="listitem">
+        <span class="hero__stat-value">4.1 sec</span>
+        <span class="hero__stat-label">0Ã¢â‚¬â€œ60 mph</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div id="trust-bar">
+    <div class="trust-bar__inner">
+      <div class="trust-item">
+        <span class="trust-item__value">2,400+</span>
+        <span class="trust-item__label">Vehicles Referred</span>
+      </div>
+      <div class="trust-item">
+        <span class="trust-item__value">98%</span>
+        <span class="trust-item__label">Satisfaction Rate</span>
+      </div>
+      <div class="trust-item">
+        <span class="trust-item__value">14 Days</span>
+        <span class="trust-item__label">Avg. Delivery</span>
+      </div>
+      <div class="trust-item">
+        <span class="trust-item__value">5 Years</span>
+        <span class="trust-item__label">Warranty Support</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURE 1 Ã¢â‚¬â€ ALLOY BODY -->
+  <section id="feature-alloy" class="feature-section" aria-label="Aerospace-grade alloy body">
+    <div class="feature-section__bg" id="bg-alloy"></div>
+    <div class="feature-section__overlay"></div>
+    <div class="feature-section__content">
+      <span class="feature-section__tag reveal">Body Engineering</span>
+      <h2 class="feature-section__title reveal reveal-delay-1">
+        Aerospace-Grade<br>Alloy Exoskeleton
+      </h2>
+      <p class="feature-section__body reveal reveal-delay-2">
+        An ultra-durable structural body resists dents, corrosion, and everyday wear. Purpose-built for any terrain Ã¢â‚¬â€ city streets to extreme off-road environments.
+      </p>
+      <a href="#order-cta" class="feature-learn-more reveal reveal-delay-3" aria-label="Learn more about alloy body">
+        Learn More
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- FEATURE 2 Ã¢â‚¬â€ FAST CHARGING -->
+  <section id="feature-range" class="feature-section feature-section--right" aria-label="Fast charging network">
+    <div class="feature-section__bg" id="bg-range"></div>
+    <div class="feature-section__overlay"></div>
+    <div class="feature-section__content">
+      <span class="feature-section__tag reveal">Range & Charging</span>
+      <h2 class="feature-section__title reveal reveal-delay-1">
+        250 kW<br>Fast Charge
+      </h2>
+      <p class="feature-section__body reveal reveal-delay-2">
+        Add 136 miles of range in just 15 minutes. Plug in to any compatible fast-charge network Ã¢â‚¬â€ no proprietary locks, no limitations.
+      </p>
+      <a href="#order-cta" class="feature-learn-more reveal reveal-delay-3" aria-label="Learn more about charging">
+        Learn More
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- FEATURE 3 Ã¢â‚¬â€ UTILITY -->
+  <section id="feature-utility" class="feature-section" aria-label="Utility and storage">
+    <div class="feature-section__bg" id="bg-utility"></div>
+    <div class="feature-section__overlay"></div>
+    <div class="feature-section__content">
+      <span class="feature-section__tag reveal">Utility</span>
+      <h2 class="feature-section__title reveal reveal-delay-1">
+        11,000 lbs<br>Towing Capacity
+      </h2>
+      <p class="feature-section__body reveal reveal-delay-2">
+        A reinforced truck bed and integrated storage vault provide cargo capacity that adapts to every mission Ã¢â‚¬â€ work site, camp ground, or coastal highway.
+      </p>
+      <a href="#order-cta" class="feature-learn-more reveal reveal-delay-3" aria-label="Learn more about utility">
+        Learn More
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- SPECS -->
+  <section id="specs" aria-label="Vehicle Specifications">
+    <div class="container">
+      <header class="specs__header reveal">
+        <h2 class="specs__title">Vehicle Specs</h2>
+        <p class="specs__subtitle" id="specs-subtitle">AWD Electric Truck Ã‚Â· Dual Motor AWD</p>
+      </header>
+
+      <div class="specs__model-tabs" role="tablist" aria-label="Select model">
+        <button class="specs__model-tab active" role="tab" aria-selected="true" data-model="RWD Electric Truck-pro">Cybertruck All-Wheel Drive</button>
+        <button class="specs__model-tab" role="tab" aria-selected="false" data-model="RWD Electric Truck-ultra">Cyberbeast</button>
+        <button class="specs__model-tab" role="tab" aria-selected="false" data-model="RWD Electric Truck">Cybertruck RWD</button>
+      </div>
+
+      <div class="specs__grid reveal" id="specs-grid"></div>
+
+      <div class="specs__cta reveal reveal-delay-1">
+        <button class="btn btn--primary" id="specs-enquire-btn">Enquire About This Model</button>
+      </div>
+      <p class="specs__disclaimer">
+        * Specifications are estimates based on manufacturer published data. Actual performance may vary by configuration and driving conditions. AxisEV is an independent referral platform and is not affiliated with any vehicle manufacturer.
+      </p>
+    </div>
+  </section>
+
+  <!-- ORDER CTA -->
+  <section id="order-cta" aria-label="Connect with a Specialist">
+    <div class="container">
+      <p class="order-cta__eyebrow reveal">
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor"><circle cx="5" cy="5" r="5"/></svg>
+        Limited Allocation Available
+      </p>
+      <h2 class="order-cta__title reveal reveal-delay-1">Ready to Drive Electric?</h2>
+      <p class="order-cta__sub reveal reveal-delay-2">
+        Speak with an AxisEV specialist and get exclusive referral pricing on your next electric vehicle. We handle everything Ã¢â‚¬â€ from configuration to delivery.
+      </p>
+      <div class="order-cta__buttons reveal reveal-delay-3">
+        <button class="btn btn--primary" id="cta-enquire-btn">Connect with a Specialist</button>
+        <button class="btn btn--ghost" id="cta-drive-btn">Book a Test Drive</button>
+      </div>
+      <p class="order-cta__price reveal reveal-delay-4">
+        Cybertruck from
+        <span class="order-cta__price-strike">$80,500</span>
+        <span class="order-cta__price-highlight">$56,350 (referral rate)</span>
+        &middot; Financing available
+      </p>
+    </div>
+  </section>
+
+  <!-- SHOP -->
+  <section id="shop" aria-label="AxisEV Shop">
+    <div class="shop__header reveal">
+      <p class="shop__eyebrow">Shop</p>
+      <h2 class="shop__title">Electric Vehicles & Accessories</h2>
+      <p class="shop__sub">Configure your vehicle. Add accessories. Connect with a specialist in minutes.</p>
+      <div class="shop__tabs" role="tablist" aria-label="Shop categories">
+        <button class="shop__tab active" data-category="models" role="tab" aria-selected="true">Models</button>
+        <button class="shop__tab" data-category="accessories" role="tab" aria-selected="false">Accessories</button>
+        <button class="shop__tab" data-category="apparel" role="tab" aria-selected="false">Apparel</button>
+        <button class="shop__tab" data-category="charging" role="tab" aria-selected="false">Charging</button>
+      </div>
+    </div>
+
+    <!-- MODELS -->
+    <div class="shop__grid" id="shop-models" data-category-panel="models">
+
+      <article class="shop-card reveal">
+        <div class="shop-card__badge">From <s>$61,500</s> $43,050</div>
+        <div class="shop-card__img-wrap">
+          <img src="assets/images/nav/RWD Electric Truck.jpg" alt="RWD Electric Truck electric pickup truck" class="shop-card__img" loading="lazy" />
+        </div>
+        <div class="shop-card__body">
+          <div class="shop-card__tag">Rear-Wheel Drive</div>
+          <h3 class="shop-card__name">Cybertruck RWD</h3>
+          <p class="shop-card__desc">250 miles of range, 315 hp, and 7,500 lbs towing capacity. The accessible entry into electric trucks.</p>
+          <div class="shop-card__specs">
+            <div class="shop-card__spec"><span class="spec-val">6.5s</span><span class="spec-lbl">0–60 mph</span></div>
+            <div class="shop-card__spec"><span class="spec-val">250 mi</span><span class="spec-lbl">Range</span></div>
+            <div class="shop-card__spec"><span class="spec-val">315 hp</span><span class="spec-lbl">Power</span></div>
+          </div>
+          <div class="shop-card__price">
+            <span class="shop-card__price-main"><s>$61,500</s> <span class="price-highlight">$43,050</span></span>
+            <span class="shop-card__price-lease">or from $600/mo</span>
+          </div>
+          <div class="shop-card__actions">
+            <button class="btn btn--primary shop-card__btn" onclick="document.getElementById('chat-fab').click()">Enquire</button>
+            <a href="#specs" class="btn btn--secondary shop-card__btn">View Specs</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="shop-card shop-card--featured reveal reveal-delay-1">
+        <div class="shop-card__featured-label">Best Value</div>
+        <div class="shop-card__badge shop-card__badge--blue">Most Popular · <s>$80,500</s> $56,350</div>
+        <div class="shop-card__img-wrap">
+          <img src="assets/images/nav/AWD Electric Truck.jpg" alt="AWD Electric Truck dual motor electric truck" class="shop-card__img" loading="lazy" />
+        </div>
+        <div class="shop-card__body">
+          <div class="shop-card__tag">Dual Motor AWD</div>
+          <h3 class="shop-card__name">Cybertruck All-Wheel Drive</h3>
+          <p class="shop-card__desc">325 miles of range, 600 hp, adaptive suspension, and 11,000 lbs towing. The benchmark electric truck.</p>
+          <div class="shop-card__specs">
+            <div class="shop-card__spec"><span class="spec-val">4.1s</span><span class="spec-lbl">0–60 mph</span></div>
+            <div class="shop-card__spec"><span class="spec-val">325 mi</span><span class="spec-lbl">Range</span></div>
+            <div class="shop-card__spec"><span class="spec-val">600 hp</span><span class="spec-lbl">Power</span></div>
+          </div>
+          <div class="shop-card__price">
+            <span class="shop-card__price-main"><s>$80,500</s> <span class="price-highlight">$56,350</span></span>
+            <span class="shop-card__price-lease">or from $790/mo</span>
+          </div>
+          <div class="shop-card__actions">
+            <button class="btn btn--primary shop-card__btn" onclick="document.getElementById('chat-fab').click()">Enquire</button>
+            <a href="#specs" class="btn btn--secondary shop-card__btn">View Specs</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="shop-card reveal reveal-delay-2">
+        <div class="shop-card__badge shop-card__badge--red">Ultimate · <s>$101,000</s> $70,700</div>
+        <div class="shop-card__img-wrap">
+          <img src="assets/images/nav/Performance Electric Truck.jpg" alt="Performance Electric Truck tri-motor electric truck" class="shop-card__img" loading="lazy" />
+        </div>
+        <div class="shop-card__body">
+          <div class="shop-card__tag">Tri-Motor AWD</div>
+          <h3 class="shop-card__name">Cyberbeast</h3>
+          <p class="shop-card__desc">The fastest electric truck available. 0–60 in 2.6 seconds. 845 hp unleashed on demand.</p>
+          <div class="shop-card__specs">
+            <div class="shop-card__spec"><span class="spec-val">2.6s</span><span class="spec-lbl">0–60 mph</span></div>
+            <div class="shop-card__spec"><span class="spec-val">320 mi</span><span class="spec-lbl">Range</span></div>
+            <div class="shop-card__spec"><span class="spec-val">845 hp</span><span class="spec-lbl">Power</span></div>
+          </div>
+          <div class="shop-card__price">
+            <span class="shop-card__price-main"><s>$101,000</s> <span class="price-highlight">$70,700</span></span>
+            <span class="shop-card__price-lease">or from $990/mo</span>
+          </div>
+          <div class="shop-card__actions">
+            <button class="btn btn--primary shop-card__btn" onclick="document.getElementById('chat-fab').click()">Enquire</button>
+            <a href="#specs" class="btn btn--secondary shop-card__btn">View Specs</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="shop-card reveal reveal-delay-3">
+        <div class="shop-card__badge">From <s>$48,500</s> $33,950</div>
+        <div class="shop-card__img-wrap" style="background:#f4f4f4;">
+          <img src="assets/images/nav/apex-suv.jpg" alt="AWD Electric Crossover electric crossover" class="shop-card__img" loading="lazy" style="object-fit:contain;padding:16px;" />
+        </div>
+        <div class="shop-card__body">
+          <div class="shop-card__tag">Dual Motor · AWD</div>
+          <h3 class="shop-card__name">Model Y</h3>
+          <p class="shop-card__desc">320 miles of range, versatile 7-seat configuration, and a premium minimalist interior.</p>
+          <div class="shop-card__specs">
+            <div class="shop-card__spec"><span class="spec-val">4.8s</span><span class="spec-lbl">0–60 mph</span></div>
+            <div class="shop-card__spec"><span class="spec-val">320 mi</span><span class="spec-lbl">Range</span></div>
+            <div class="shop-card__spec"><span class="spec-val">384 hp</span><span class="spec-lbl">Power</span></div>
+          </div>
+          <div class="shop-card__price">
+            <span class="shop-card__price-main"><s>$48,500</s> <span class="price-highlight">$33,950</span></span>
+            <span class="shop-card__price-lease">or from $480/mo</span>
+          </div>
+          <div class="shop-card__actions">
+            <button class="btn btn--primary shop-card__btn" onclick="document.getElementById('chat-fab').click()">Enquire</button>
+            <a href="#specs" class="btn btn--secondary shop-card__btn">View Specs</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="shop-card reveal reveal-delay-4">
+        <div class="shop-card__badge">From <s>$81,000</s> $56,700</div>
+        <div class="shop-card__img-wrap" style="background:#f4f4f4;">
+          <img src="assets/images/nav/apex-xl.jpg" alt="Luxury Electric SUV luxury electric SUV" class="shop-card__img" loading="lazy" style="object-fit:contain;padding:16px;" />
+        </div>
+        <div class="shop-card__body">
+          <div class="shop-card__tag">Dual Motor · AWD</div>
+          <h3 class="shop-card__name">Model X</h3>
+          <p class="shop-card__desc">335 miles of range, distinctive gull-wing doors, and a spacious 7-seat executive interior.</p>
+          <div class="shop-card__specs">
+            <div class="shop-card__spec"><span class="spec-val">3.8s</span><span class="spec-lbl">0–60 mph</span></div>
+            <div class="shop-card__spec"><span class="spec-val">335 mi</span><span class="spec-lbl">Range</span></div>
+            <div class="shop-card__spec"><span class="spec-val">670 hp</span><span class="spec-lbl">Power</span></div>
+          </div>
+          <div class="shop-card__price">
+            <span class="shop-card__price-main"><s>$81,000</s> <span class="price-highlight">$56,700</span></span>
+            <span class="shop-card__price-lease">or from $850/mo</span>
+          </div>
+          <div class="shop-card__actions">
+            <button class="btn btn--primary shop-card__btn" onclick="document.getElementById('chat-fab').click()">Enquire</button>
+            <a href="#specs" class="btn btn--secondary shop-card__btn">View Specs</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- ACCESSORIES -->
+    <div class="shop__grid hidden" id="shop-accessories" data-category-panel="accessories">
+      <article class="shop-card reveal">
+        <div class="shop-card__img-wrap" style="background:#f4f4f4;">
+          <img src="assets/images/shop/accessories/rooftop-tent.jpg" alt="Truck bed rooftop camping tent" class="shop-card__img" loading="lazy" style="object-fit:contain;padding:0" />
+        </div>
+        <div class="shop-card__body">
+          <h3 class="shop-card__name">Rooftop Camp Tent</h3>
+          <p class="shop-card__desc">Ultralight geodesic dome tent designed for electric truck cargo beds. Quick-deploy, weatherproof, sleeps two.</p>
+          <div class="shop-card__price" style="margin-top:auto;">
+            <span class="shop-card__price-main">$2,975</span>
+          </div>
+          <div class="shop-card__actions">
+            <button class="btn btn--primary shop-card__btn btn--full" onclick="Utils.showToast('Added to enquiry list!')">Add to Cart</button>
+          </div>
+        </div>
+      </article>
+      <article class="shop-card reveal reveal-delay-1">
+        <div class="shop-card__img-wrap" style="background:#f4f4f4;">
+          <img src="assets/images/shop/accessories/paint-film.jpg" alt="Paint protection film application" class="shop-card__img" loading="lazy" style="object-fit:cover" />
+        </div>
+        <div class="shop-card__body">
+          <h3 class="shop-card__name">Paint Protection Film</h3>
+          <p class="shop-card__desc">Self-healing urethane-based film protects against scratches while offering a unique satin finish. Professional installation included.</p>
+          <div class="shop-card__price" style="margin-top:auto;">
+            <span class="shop-card__price-main">$6,000</span>
+          </div>
+          <div class="shop-card__actions">
+            <button class="btn btn--primary shop-card__btn btn--full" onclick="Utils.showToast('Added to enquiry list!')">Add to Cart</button>
+          </div>
+        </div>
+      </article>
+      <article class="shop-card reveal reveal-delay-2">
+        <div class="shop-card__img-wrap" style="background:#f4f4f4;">
+          <img src="assets/images/shop/accessories/crossbars.jpg" alt="Truck bed crossbars with bicycle" class="shop-card__img" loading="lazy" style="object-fit:cover" />
+        </div>
+        <div class="shop-card__body">
+          <h3 class="shop-card__name">Bed Crossbars</h3>
+          <p class="shop-card__desc">Aerodynamic aluminium crossbars for mounting bike racks, ski equipment, or cargo boxes on the truck bed rail system.</p>
+          <div class="shop-card__price" style="margin-top:auto;">
+            <span class="shop-card__price-main">$800</span>
+          </div>
+          <div class="shop-card__actions">
+            <button class="btn btn--primary shop-card__btn btn--full" onclick="Utils.showToast('Added to enquiry list!')">Add to Cart</button>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- APPAREL -->
+    <div class="shop__grid hidden" id="shop-apparel" data-category-panel="apparel">
+      <article class="shop-card reveal">
+        <div class="shop-card__img-wrap" style="background:#f4f4f4;">
+          <img src="assets/images/shop/apparel/hoodie.jpg" alt="AxisEV geometric hoodie" class="shop-card__img" loading="lazy" style="object-fit:contain;padding:16px;" />
+        </div>
+        <div class="shop-card__body">
+          <h3 class="shop-card__name">AxisEV Heavyweight Hoodie</h3>
+          <p class="shop-card__desc">Premium heavyweight hoodie featuring the AxisEV geometric logo. 100% combed cotton. Available in SÃ¢â‚¬â€œXXL.</p>
+          <div class="shop-card__price" style="margin-top:auto;">
+            <span class="shop-card__price-main">$60</span>
+          </div>
+          <div class="shop-card__actions">
+            <button class="btn btn--primary shop-card__btn btn--full" onclick="Utils.showToast('Added to cart!')">Add to Cart</button>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- CHARGING -->
+    <div class="shop__grid hidden" id="shop-charging" data-category-panel="charging">
+      <article class="shop-card reveal">
+        <div class="shop-card__img-wrap" style="background:#f4f4f4;">
+          <img src="assets/images/nav/wall-charger.jpg" alt="Home EV wall charger" class="shop-card__img" loading="lazy" style="object-fit:contain;padding:24px;" />
+        </div>
+        <div class="shop-card__body">
+          <h3 class="shop-card__name">Universal Wall Charger</h3>
+          <p class="shop-card__desc">The most convenient home charging solution for any electric vehicle. Compatible with all major EV standards. Professional installation available.</p>
+          <div class="shop-card__price" style="margin-top:auto;">
+            <span class="shop-card__price-main">$595</span>
+          </div>
+          <div class="shop-card__actions">
+            <button class="btn btn--primary shop-card__btn btn--full" onclick="Utils.showToast('Added to enquiry list!')">Add to Cart</button>
+          </div>
+        </div>
+      </article>
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+    <footer>
+    <div class="footer__grid" style="grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px;">
+      <div>
+        <div class="footer__brand-name">Axis<span>EV</span></div>
+        <p class="footer__brand-desc" style="font-size: 14px; line-height: 1.7; opacity: 0.8; margin-top: 16px;">
+          Nigeria's leading electric vehicle referral platform. We connect you to premium EVs at exclusive rates with expert guidance from enquiry to delivery. 
+          <br><br>
+          <strong>About Us:</strong> AxisEV is dedicated to accelerating the transition to sustainable energy across Africa. Our platform streamlines the acquisition of next-generation electric vehicles, offering unmatched customer service, personalized financing configurations, and nationwide after-sales support. We believe the future of mobility is electric, and we are building the infrastructure to make it accessible today.
+        </p>
+      </div>
+      <div>
+        <p class="footer__col-title">Vehicles</p>
+        <div class="footer__col-links">
+          <a href="#shop">Cybertruck RWD</a>
+          <a href="#shop">Cybertruck All-Wheel Drive</a>
+          <a href="#shop">Cyberbeast</a>
+          <a href="#shop">Model Y</a>
+          <a href="#shop">Model X</a>
+        </div>
+      </div>
+      <div>
+        <p class="footer__col-title">Services</p>
+        <div class="footer__col-links">
+          <a href="#order-cta">EV Referral</a>
+          <a href="#order-cta">Test Drive</a>
+          <a href="#order-cta">Trade-In</a>
+          <a href="#order-cta">Financing</a>
+        </div>
+      </div>
+      <div>
+        <p class="footer__col-title">Legal & Info</p>
+        <div class="footer__col-links">
+          <a href="legal.html#privacy">Privacy Policy</a>
+          <a href="legal.html#terms">Terms of Service</a>
+          <a href="#" onclick="document.getElementById('disclaimer-modal').showModal(); return false;" style="color: var(--teal); font-weight: 600;">Disclaimer</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__copy">&copy; 2026 AxisEV. All rights reserved. AxisEV is an independent referral platform, not affiliated with any vehicle manufacturer.</p>
+      <div class="footer__legal">
+        <a href="legal.html#privacy">Privacy</a>
+        <a href="legal.html#terms">Terms</a>
+        <a href="#" onclick="document.getElementById('disclaimer-modal').showModal(); return false;">Disclaimer</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Disclaimer Modal -->
+  <dialog id="disclaimer-modal" style="border: none; border-radius: 12px; padding: 32px; max-width: 500px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); margin: auto;">
+    <h3 style="color: #E82020; margin-bottom: 16px; font-size: 20px;">Important Demo Disclaimer</h3>
+    <p style="font-size: 15px; line-height: 1.6; color: #171a20; margin-bottom: 24px;">
+      <strong>AxisEV is a demonstration project and portfolio piece.</strong> It is not a real registered company, and no actual financial transactions, vehicle reservations, or purchases occur on this website. <br><br>
+      The vehicle designs, names, and specifications are fictional and generated for illustrative purposes. They are not affiliated with or endorsed by any actual automotive manufacturer.
+    </p>
+    <div style="display: flex; justify-content: flex-end; gap: 12px;">
+      <a href="legal.html" style="padding: 10px 16px; text-decoration: none; color: #0D1117; font-weight: 600; font-size: 14px;">Read Full Legal</a>
+      <button onclick="document.getElementById('disclaimer-modal').close()" style="background: #0D1117; color: white; border: none; padding: 10px 20px; border-radius: 8px; font-weight: 600; cursor: pointer;">I Understand</button>
+    </div>
+  </dialog>
+
+  <!-- Toast -->
+  <div id="site-toast" role="alert" aria-live="polite"></div>
+
+  <!-- WhatsApp Chat FAB -->
+  <button id="chat-fab" aria-label="Open support chat">
+    <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+  </button>
+
+  <script src="js/main.js" defer></script>
+  <script>
+    /* WhatsApp Redirect Logic */
+    const WHATSAPP_NUMBER = '13059950245'; // Change this to your real number
+    const WHATSAPP_MESSAGE = encodeURIComponent('Hello, I am interested in AxisEV vehicles.');
+    
+    function redirectToWhatsApp(e) {
+      if (e) e.preventDefault();
+      window.open(https://wa.me/ + WHATSAPP_NUMBER + ?text= + WHATSAPP_MESSAGE, '_blank', 'noopener');
+    }
+
+    // 1. Core CTA Buttons
+    ['hero-enquire-btn','cta-enquire-btn','cta-drive-btn','specs-enquire-btn', 'chat-fab'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) {
+        // Remove existing listeners if any by replacing clone, or just add
+        el.addEventListener('click', redirectToWhatsApp);
+      }
+    });
+
+    // 2. Mega menu enquire spans
+    ['mm-order-RWD Electric Truck','mm-order-AWD Electric Truck','mm-order-apex','mm-order-apex-xl'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.addEventListener('click', redirectToWhatsApp);
+    });
+
+    // 3. Shop Card buttons (Order Now)
+    document.querySelectorAll('.shop-card__btn').forEach(btn => {
+      btn.addEventListener('click', redirectToWhatsApp);
+    });
+  </script>
+  
+<!-- Chat Widget -->
+<div class="chat-widget" id="chat-widget">
+  <div class="chat-widget__header">
+    <div class="chat-widget__title">Support Chat</div>
+    <button class="chat-widget__close" id="chat-widget-close">&times;</button>
+  </div>
+  <div class="chat-widget__body" id="chat-widget-body">
+    <div class="chat-widget__messages" id="chat-widget-messages">
+      <div class="chat-msg chat-msg--agent">Hi there! How can we help you today?</div>
+    </div>
+    <div class="chat-widget__input-area">
+      <input type="text" id="chat-widget-input" placeholder="Type a message..." />
+      <button id="chat-widget-send">Send</button>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/appwrite@13.0.1"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

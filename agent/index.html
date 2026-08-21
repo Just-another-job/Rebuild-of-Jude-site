@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EdgeSync Support — Agent Portal</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <!-- Inline SVG favicon — no external dependency -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230d1117'/%3E%3Ctext x='16' y='21' text-anchor='middle' font-family='system-ui,sans-serif' font-weight='700' font-size='13' fill='%2322d3c8'%3EES%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="agent.css" />
+  <!-- Appwrite SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/appwrite@14.0.1/dist/iife/sdk.min.js" defer></script>
+</head>
+<body>
+
+<!-- LOGIN SCREEN -->
+<div id="login-screen">
+  <div class="login-card">
+
+    <!-- EdgeSync Logo -->
+    <div class="login-card__logo">
+      <span class="login-logo__text">Edge<span class="login-logo__accent">Sync</span></span>
+      <span class="login-logo__sub">Support</span>
+    </div>
+
+    <div class="login-card__badge">
+      <svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/></svg>
+      Agent Portal
+    </div>
+
+    <h1 class="login-card__title">Welcome back</h1>
+    <p class="login-card__sub">Sign in to manage customer support conversations.</p>
+
+    <form id="login-form" novalidate>
+      <div class="form-group">
+        <label class="form-label" for="login-email">Email Address</label>
+        <input type="email" id="login-email" class="form-input" placeholder="agent@edgesync.io" autocomplete="email" required />
+        <div class="form-error" id="email-error">Please enter a valid email address.</div>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="login-password">Password</label>
+        <input type="password" id="login-password" class="form-input" placeholder="••••••••" autocomplete="current-password" required />
+        <div class="form-error" id="password-error">Password is required.</div>
+      </div>
+      <div class="form-error" id="login-error" style="margin-bottom:12px;"></div>
+      <button type="submit" class="btn-login" id="login-btn">
+        <span id="login-btn-text">Sign In</span>
+        <div class="spinner" id="login-spinner" style="display:none;width:16px;height:16px;border-color:rgba(255,255,255,0.3);border-top-color:white;"></div>
+      </button>
+      <button type="button" class="btn-demo" id="demo-login-btn">
+        Continue in Demo Mode (no connection needed)
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashboard">
+
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <div class="topbar__logo">
+      <span class="topbar__logo-text">Edge<span class="topbar__logo-accent">Sync</span></span>
+      <div class="topbar__separator"></div>
+      <span class="topbar__title">Agent Portal</span>
+    </div>
+
+    <div class="topbar__spacer"></div>
+
+    <!-- Stats chips -->
+    <div id="stats-bar" style="display:flex;gap:16px;align-items:center;margin-right:16px;">
+      <span style="font-size:12px;color:rgba(255,255,255,0.6);">
+        Open: <strong id="stat-open" style="color:white;">0</strong>
+      </span>
+      <span style="font-size:12px;color:rgba(255,255,255,0.6);">
+        Waiting: <strong id="stat-waiting" style="color:white;">0</strong>
+      </span>
+    </div>
+
+    <!-- Agent Info + Status -->
+    <div class="status-dropdown" id="status-dropdown">
+      <div class="topbar__agent" id="status-toggle" aria-haspopup="true" aria-expanded="false">
+        <div class="topbar__avatar">
+          <span id="agent-avatar-letter">A</span>
+          <span class="status-dot status-dot--online" id="agent-status-dot"></span>
+        </div>
+        <div class="topbar__agent-info">
+          <div class="topbar__agent-name" id="agent-display-name">Agent</div>
+          <div class="topbar__agent-status" id="agent-status-label">● Online</div>
+        </div>
+      </div>
+
+      <div class="status-dropdown__menu" id="status-menu">
+        <div class="status-option active" data-status="online">
+          <span class="status-dot status-dot--online"></span> Online
+        </div>
+        <div class="status-option" data-status="away">
+          <span class="status-dot status-dot--away"></span> Away
+        </div>
+        <div class="status-option" data-status="offline">
+          <span class="status-dot status-dot--offline"></span> Appear Offline
+        </div>
+      </div>
+    </div>
+
+    <button class="topbar__logout" id="logout-btn">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+      Logout
+    </button>
+  </header>
+
+  <!-- MAIN BODY -->
+  <div class="dashboard-body">
+
+    <!-- LEFT SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar__header">
+        <div class="sidebar__search">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="conv-search" placeholder="Search conversations…" aria-label="Search conversations" />
+        </div>
+      </div>
+
+      <div class="sidebar__tabs" role="tablist">
+        <button class="sidebar__tab active" data-tab="open" role="tab" aria-selected="true">
+          Open <span class="tab-count" id="count-open">0</span>
+        </button>
+        <button class="sidebar__tab" data-tab="waiting" role="tab" aria-selected="false">
+          Waiting <span class="tab-count" id="count-waiting" style="display:none;">0</span>
+        </button>
+        <button class="sidebar__tab" data-tab="closed" role="tab" aria-selected="false">Closed</button>
+        <button class="sidebar__tab" data-tab="all" role="tab" aria-selected="false">All</button>
+      </div>
+
+      <div class="sidebar__list" id="conv-list" role="listbox" aria-label="Conversations">
+        <div class="sidebar__empty">No conversations yet.<br>Waiting for customers…</div>
+      </div>
+    </aside>
+
+    <!-- CENTER — Thread -->
+    <main class="message-area">
+      <div class="thread-empty" id="thread-empty">
+        <div class="thread-empty__icon">💬</div>
+        <h3 style="font-size:16px;font-weight:500;color:#393C41;margin-bottom:8px;">No conversation selected</h3>
+        <p>Select a conversation from the list to view and reply.</p>
+      </div>
+
+      <div id="thread-view" style="display:none;flex-direction:column;height:100%;">
+        <!-- Thread Header -->
+        <div class="thread-header">
+          <div class="thread-header__avatar" id="thread-avatar">?</div>
+          <div class="thread-header__info">
+            <div class="thread-header__name" id="thread-name">Customer</div>
+            <div class="thread-header__sub" id="thread-sub">Open · Website</div>
+          </div>
+          <div class="thread-header__actions">
+            <button class="action-btn" id="btn-back-list" title="Back to conversations">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+              Back
+            </button>
+            <button class="action-btn" id="btn-assign-self" title="Assign to yourself">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              Assign Me
+            </button>
+            <button class="action-btn" id="btn-close-conv" title="Close conversation">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              Resolve
+            </button>
+            <button class="action-btn danger" id="btn-reopen-conv" title="Reopen conversation" style="display:none;">
+              Reopen
+            </button>
+          </div>
+        </div>
+
+        <!-- Messages -->
+        <div class="thread-messages" id="thread-messages" aria-live="polite"></div>
+
+        <!-- Typing indicator -->
+        <div class="thread-typing" id="thread-typing">Customer is typing…</div>
+
+        <!-- Quick Replies -->
+        <div class="quick-replies" id="quick-replies">
+          <span style="font-size:11px;color:#A2A3A5;align-self:center;margin-right:4px;">Quick:</span>
+          <button class="quick-reply-btn" data-reply="Hi! Welcome to AxisEV Support. How can I help you today?">Greeting</button>
+          <button class="quick-reply-btn" data-reply="The Titan-X starts from ₦79M and the Titan-R from ₦45M. Would you like a full pricing breakdown including financing options?">Pricing</button>
+          <button class="quick-reply-btn" data-reply="We currently have the Titan-R, Titan-X, Titan-X Pro, Apex SUV, and Apex XL available. Delivery times vary — would you like me to check availability in your area?">Availability</button>
+          <button class="quick-reply-btn" data-reply="I'd be happy to schedule a test drive for you! Please share your location and preferred date, or visit our website to book your slot.">Test Drive</button>
+          <button class="quick-reply-btn" data-reply="Titan-X key specs: 325mi range, 0–60 in 4.1s, 11,000 lbs towing, Dual Motor AWD. Want the full spec sheet?">Specs</button>
+          <button class="quick-reply-btn" data-reply="I understand your concern. Let me look into that for you right away. Could you provide a bit more detail?">I'll Check</button>
+        </div>
+
+        <!-- Input -->
+        <div class="thread-input-area">
+          <div class="thread-input-row">
+            <button class="thread-attach-btn" id="thread-attach" aria-label="Attach file">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
+            </button>
+            <textarea id="thread-input" placeholder="Type a reply…" rows="1" aria-label="Reply input" maxlength="2000"></textarea>
+            <button class="thread-send-btn" id="thread-send" aria-label="Send reply" disabled>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            </button>
+          </div>
+          <input type="file" id="thread-file-input" accept="image/*,.pdf,.doc,.docx,.txt,.zip" style="display:none;" />
+        </div>
+      </div>
+    </main>
+
+    <!-- RIGHT PANEL — Customer Info -->
+    <aside class="info-panel" id="info-panel">
+      <div class="info-panel__section">
+        <div class="info-panel__title">Customer Details</div>
+        <div class="info-row"><span class="info-label">Name</span><span class="info-value" id="info-name">—</span></div>
+        <div class="info-row"><span class="info-label">Email</span><span class="info-value" id="info-email">—</span></div>
+        <div class="info-row"><span class="info-label">Source</span><span class="info-value" id="info-source">—</span></div>
+        <div class="info-row"><span class="info-label">Started</span><span class="info-value" id="info-started">—</span></div>
+      </div>
+
+      <div class="info-panel__section">
+        <div class="info-panel__title">Conversation</div>
+        <div class="info-row">
+          <span class="info-label">Status</span>
+          <select class="status-select" id="conv-status-select" aria-label="Change conversation status">
+            <option value="open">Open</option>
+            <option value="waiting">Waiting</option>
+            <option value="closed">Closed</option>
+          </select>
+        </div>
+        <div class="info-row"><span class="info-label">Assigned To</span><span class="info-value" id="info-assigned">Unassigned</span></div>
+      </div>
+
+      <div class="info-panel__section">
+        <div class="info-panel__title">Notes</div>
+        <textarea class="notes-textarea" id="agent-notes" placeholder="Add private notes about this customer…" aria-label="Agent notes"></textarea>
+        <button class="action-btn" style="margin-top:8px;width:100%;justify-content:center;" id="save-notes-btn">Save Notes</button>
+      </div>
+
+      <div class="info-panel__section">
+        <div class="info-panel__title">Quick Actions</div>
+        <button class="action-btn" style="width:100%;justify-content:center;margin-bottom:8px;" id="btn-email-customer">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Email Customer
+        </button>
+        <button class="action-btn" style="width:100%;justify-content:center;" id="btn-whatsapp-customer">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+          WhatsApp Customer
+        </button>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="agent-toast" id="agent-toast" role="alert"></div>
+
+<style>
+  .spinner {
+    border: 2px solid rgba(255,255,255,0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    display: inline-block;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+</style>
+
+<script src="agent.js?v=4" defer></script>
+</body>
+</html>
