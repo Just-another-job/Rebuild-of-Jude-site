@@ -118,16 +118,39 @@
 
 .shop-card__badge {
   position: absolute;
-  top: var(--space-4);
-  right: var(--space-4);
-  z-index: 2;
-  background: var(--color-surface);
+  top: var(--space-3);
+  right: var(--space-3);
+  background: var(--color-surface-2);
   color: var(--color-white-70);
   font-size: 11px;
   font-weight: 600;
   padding: 4px 10px;
   border-radius: var(--radius-pill);
   border: 1px solid var(--color-border);
+  z-index: 2;
+}
+
+/* Additional Shop Card Utility Classes */
+.shop-card__img-wrap--light {
+  background: #f4f4f4;
+}
+.shop-card__img--contain {
+  object-fit: contain;
+  padding: 16px;
+}
+.shop-card__img--contain-lg {
+  object-fit: contain;
+  padding: 24px;
+}
+.shop-card__img--contain-none {
+  object-fit: contain;
+  padding: 0;
+}
+.shop-card__img--cover {
+  object-fit: cover;
+}
+.shop-card__price--auto {
+  margin-top: auto;
 }
 .shop-card__badge--blue {
   background: hsla(220, 80%, 50%, 0.15);

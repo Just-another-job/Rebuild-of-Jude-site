@@ -9,7 +9,7 @@
   <!-- Security Meta Tags -->
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self';" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self';" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="AxisEV — Drive the Future. Own It Now." />
@@ -539,8 +539,8 @@
 
       <article class="shop-card reveal reveal-delay-3">
         <div class="shop-card__badge">From <s>$48,500</s> $33,950</div>
-        <div class="shop-card__img-wrap" style="background:#f4f4f4;">
-          <img src="assets/images/nav/apex-suv.jpg" alt="AWD Electric Crossover electric crossover" class="shop-card__img" loading="lazy" style="object-fit:contain;padding:16px;" />
+        <div class="shop-card__img-wrap shop-card__img-wrap--light">
+          <img src="assets/images/nav/apex-suv.jpg" alt="AWD Electric Crossover electric crossover" class="shop-card__img" loading="lazy" class="shop-card__img shop-card__img--contain" />
         </div>
         <div class="shop-card__body">
           <div class="shop-card__tag">Dual Motor · AWD</div>
@@ -564,8 +564,8 @@
 
       <article class="shop-card reveal reveal-delay-4">
         <div class="shop-card__badge">From <s>$81,000</s> $56,700</div>
-        <div class="shop-card__img-wrap" style="background:#f4f4f4;">
-          <img src="assets/images/nav/apex-xl.jpg" alt="Luxury Electric SUV luxury electric SUV" class="shop-card__img" loading="lazy" style="object-fit:contain;padding:16px;" />
+        <div class="shop-card__img-wrap shop-card__img-wrap--light">
+          <img src="assets/images/nav/apex-xl.jpg" alt="Luxury Electric SUV luxury electric SUV" class="shop-card__img" loading="lazy" class="shop-card__img shop-card__img--contain" />
         </div>
         <div class="shop-card__body">
           <div class="shop-card__tag">Dual Motor · AWD</div>
@@ -592,13 +592,13 @@
     <!-- ACCESSORIES -->
     <div class="shop__grid hidden" id="shop-accessories" data-category-panel="accessories">
       <article class="shop-card reveal">
-        <div class="shop-card__img-wrap" style="background:#f4f4f4;">
-          <img src="assets/images/shop/accessories/rooftop-tent.jpg" alt="Truck bed rooftop camping tent" class="shop-card__img" loading="lazy" style="object-fit:contain;padding:0" />
+        <div class="shop-card__img-wrap shop-card__img-wrap--light">
+          <img src="assets/images/shop/accessories/rooftop-tent.jpg" alt="Truck bed rooftop camping tent" class="shop-card__img" loading="lazy" class="shop-card__img shop-card__img--contain-none" />
         </div>
         <div class="shop-card__body">
           <h3 class="shop-card__name">Rooftop Camp Tent</h3>
           <p class="shop-card__desc">Ultralight geodesic dome tent designed for electric truck cargo beds. Quick-deploy, weatherproof, sleeps two.</p>
-          <div class="shop-card__price" style="margin-top:auto;">
+          <div class="shop-card__price shop-card__price--auto">
             <span class="shop-card__price-main">$2,975</span>
           </div>
           <div class="shop-card__actions">
@@ -607,13 +607,13 @@
         </div>
       </article>
       <article class="shop-card reveal reveal-delay-1">
-        <div class="shop-card__img-wrap" style="background:#f4f4f4;">
-          <img src="assets/images/shop/accessories/paint-film.jpg" alt="Paint protection film application" class="shop-card__img" loading="lazy" style="object-fit:cover" />
+        <div class="shop-card__img-wrap shop-card__img-wrap--light">
+          <img src="assets/images/shop/accessories/paint-film.jpg" alt="Paint protection film application" class="shop-card__img" loading="lazy" class="shop-card__img shop-card__img--cover" />
         </div>
         <div class="shop-card__body">
           <h3 class="shop-card__name">Paint Protection Film</h3>
           <p class="shop-card__desc">Self-healing urethane-based film protects against scratches while offering a unique satin finish. Professional installation included.</p>
-          <div class="shop-card__price" style="margin-top:auto;">
+          <div class="shop-card__price shop-card__price--auto">
             <span class="shop-card__price-main">$6,000</span>
           </div>
           <div class="shop-card__actions">
@@ -622,13 +622,13 @@
         </div>
       </article>
       <article class="shop-card reveal reveal-delay-2">
-        <div class="shop-card__img-wrap" style="background:#f4f4f4;">
-          <img src="assets/images/shop/accessories/crossbars.jpg" alt="Truck bed crossbars with bicycle" class="shop-card__img" loading="lazy" style="object-fit:cover" />
+        <div class="shop-card__img-wrap shop-card__img-wrap--light">
+          <img src="assets/images/shop/accessories/crossbars.jpg" alt="Truck bed crossbars with bicycle" class="shop-card__img" loading="lazy" class="shop-card__img shop-card__img--cover" />
         </div>
         <div class="shop-card__body">
           <h3 class="shop-card__name">Bed Crossbars</h3>
           <p class="shop-card__desc">Aerodynamic aluminium crossbars for mounting bike racks, ski equipment, or cargo boxes on the truck bed rail system.</p>
-          <div class="shop-card__price" style="margin-top:auto;">
+          <div class="shop-card__price shop-card__price--auto">
             <span class="shop-card__price-main">$800</span>
           </div>
           <div class="shop-card__actions">
@@ -641,13 +641,13 @@
     <!-- APPAREL -->
     <div class="shop__grid hidden" id="shop-apparel" data-category-panel="apparel">
       <article class="shop-card reveal">
-        <div class="shop-card__img-wrap" style="background:#f4f4f4;">
-          <img src="assets/images/shop/apparel/hoodie.jpg" alt="AxisEV geometric hoodie" class="shop-card__img" loading="lazy" style="object-fit:contain;padding:16px;" />
+        <div class="shop-card__img-wrap shop-card__img-wrap--light">
+          <img src="assets/images/shop/apparel/hoodie.jpg" alt="AxisEV geometric hoodie" class="shop-card__img" loading="lazy" class="shop-card__img shop-card__img--contain" />
         </div>
         <div class="shop-card__body">
           <h3 class="shop-card__name">AxisEV Heavyweight Hoodie</h3>
           <p class="shop-card__desc">Premium heavyweight hoodie featuring the AxisEV geometric logo. 100% combed cotton. Available in S–XXL.</p>
-          <div class="shop-card__price" style="margin-top:auto;">
+          <div class="shop-card__price shop-card__price--auto">
             <span class="shop-card__price-main">$60</span>
           </div>
           <div class="shop-card__actions">
@@ -660,13 +660,13 @@
     <!-- CHARGING -->
     <div class="shop__grid hidden" id="shop-charging" data-category-panel="charging">
       <article class="shop-card reveal">
-        <div class="shop-card__img-wrap" style="background:#f4f4f4;">
-          <img src="assets/images/nav/wall-charger.jpg" alt="Home EV wall charger" class="shop-card__img" loading="lazy" style="object-fit:contain;padding:24px;" />
+        <div class="shop-card__img-wrap shop-card__img-wrap--light">
+          <img src="assets/images/nav/wall-charger.jpg" alt="Home EV wall charger" class="shop-card__img" loading="lazy" class="shop-card__img shop-card__img--contain-lg" />
         </div>
         <div class="shop-card__body">
           <h3 class="shop-card__name">Universal Wall Charger</h3>
           <p class="shop-card__desc">The most convenient home charging solution for any electric vehicle. Compatible with all major EV standards. Professional installation available.</p>
-          <div class="shop-card__price" style="margin-top:auto;">
+          <div class="shop-card__price shop-card__price--auto">
             <span class="shop-card__price-main">$595</span>
           </div>
           <div class="shop-card__actions">
@@ -680,10 +680,10 @@
 
   <!-- FOOTER -->
     <footer>
-    <div class="footer__grid" style="grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px;">
+    <div class="footer__grid footer__grid--custom">
       <div>
         <div class="footer__brand-name">Axis<span>EV</span></div>
-        <p class="footer__brand-desc" style="font-size: 14px; line-height: 1.7; opacity: 0.8; margin-top: 16px;">
+        <p class="footer__brand-desc footer__brand-desc--about">
           Nigeria's leading electric vehicle referral platform. We connect you to premium EVs at exclusive rates with expert guidance from enquiry to delivery. 
           <br><br>
           <strong>About Us:</strong> AxisEV is dedicated to accelerating the transition to sustainable energy across Africa. Our platform streamlines the acquisition of next-generation electric vehicles, offering unmatched customer service, personalized financing configurations, and nationwide after-sales support. We believe the future of mobility is electric, and we are building the infrastructure to make it accessible today.
@@ -713,7 +713,7 @@
         <div class="footer__col-links">
           <a href="legal.html#privacy">Privacy Policy</a>
           <a href="legal.html#terms">Terms of Service</a>
-          <a href="#" class="open-disclaimer-btn" style="color: var(--teal); font-weight: 600;">Disclaimer</a>
+          <a href="#" class="open-disclaimer-btn open-disclaimer-btn--teal">Disclaimer</a>
         </div>
       </div>
     </div>
@@ -728,15 +728,15 @@
   </footer>
 
   <!-- Disclaimer Modal -->
-  <dialog id="disclaimer-modal" style="border: none; border-radius: 12px; padding: 32px; max-width: 500px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); margin: auto;">
-    <h3 style="color: #E82020; margin-bottom: 16px; font-size: 20px;">Important Demo Disclaimer</h3>
-    <p style="font-size: 15px; line-height: 1.6; color: #171a20; margin-bottom: 24px;">
+  <dialog id="disclaimer-modal" class="disclaimer-modal">
+    <h3 class="disclaimer-modal__title">Important Demo Disclaimer</h3>
+    <p class="disclaimer-modal__body">
       <strong>AxisEV is a demonstration project and portfolio piece.</strong> It is not a real registered company, and no actual financial transactions, vehicle reservations, or purchases occur on this website. <br><br>
       The vehicle designs, names, and specifications are fictional and generated for illustrative purposes. They are not affiliated with or endorsed by any actual automotive manufacturer.
     </p>
-    <div style="display: flex; justify-content: flex-end; gap: 12px;">
-      <a href="legal.html" style="padding: 10px 16px; text-decoration: none; color: #0D1117; font-weight: 600; font-size: 14px;">Read Full Legal</a>
-      <button id="disclaimer-close-btn" style="background: #0D1117; color: white; border: none; padding: 10px 20px; border-radius: 8px; font-weight: 600; cursor: pointer;">I Understand</button>
+    <div class="disclaimer-modal__actions">
+      <a href="legal.html" class="disclaimer-modal__link">Read Full Legal</a>
+      <button id="disclaimer-close-btn" class="disclaimer-modal__close-btn">I Understand</button>
     </div>
   </dialog>
 
