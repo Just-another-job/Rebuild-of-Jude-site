@@ -1,7 +1,7 @@
 {
   "name": "AxisEV",
   "short_name": "AxisEV",
-  "description": "Nigeria's leading electric vehicle referral platform",
+  "description": "Worldwide leading electric vehicle referral platform",
   "start_url": "/",
   "display": "standalone",
   "background_color": "hsl(220, 30%, 8%)",
