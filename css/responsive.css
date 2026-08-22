@@ -1,16 +1,30 @@
 /* ============================================================
-   AxisEV — Responsive
-   responsive.css
+   AxisEV — Master Responsive Stylesheet
+   Adapts flawlessly to every mobile, tablet, and desktop aspect ratio
+   css/responsive.css
    ============================================================ */
 
-/* ── Tablet (≤ 1024px) ── */
+/* ── Universal Aspect-Ratio & Viewport Fluidity ── */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ── Tablet & Small Laptops (≤ 1024px) ── */
 @media (max-width: 1024px) {
   .nav__links { display: none; }
   .nav__hamburger { display: flex; }
-
   .mega-menu { display: none !important; }
 
-  .footer__grid {
+  #main-nav {
+    background: rgba(13, 17, 23, 0.94);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .footer__grid,
+  .footer__grid--custom {
     grid-template-columns: 1fr 1fr;
     gap: var(--space-8);
   }
@@ -23,127 +37,389 @@
   }
 }
 
-/* ── Mobile (≤ 640px) ── */
-@media (max-width: 640px) {
+/* ── Mobile Devices & Portrait Aspect Ratios (≤ 768px) ── */
+@media (max-width: 768px) {
   :root {
     --container-pad: 20px;
+    --nav-height: 60px;
   }
 
   #promo-banner { display: none; }
   body.promo-visible { --offset: var(--nav-height); }
 
-  .hero__title { letter-spacing: -0.02em; }
+  /* ── 1. Top Nav Solid Blur on Mobile ── */
+  #main-nav,
+  #main-nav.nav--transparent,
+  #main-nav.nav--scrolled {
+    background: rgba(13, 17, 23, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
 
-  .hero__stats {
-    position: static;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    padding-bottom: 0;
-    margin-top: var(--space-8);
-    gap: 0;
-    border-top: 1px solid var(--color-white-15);
+  /* ── 2. Hero Section Mobile Optimization ── */
+  #hero {
+    height: auto;
+    min-height: 100svh;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
+    position: relative;
+    padding-top: calc(var(--nav-height) + 24px);
+    padding-bottom: var(--space-6);
   }
-  .hero__stat {
-    flex: 1 1 33%;
-    border-right: 1px solid var(--color-white-15);
-    border-bottom: none;
-    padding-block: var(--space-4);
+
+  .hero__bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: 56% 38%;
+    background-repeat: no-repeat;
   }
-  .hero__stat:last-child { border-right: none; }
-  .hero__stat-value { font-size: 18px; }
+
+  .hero__gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(13, 17, 23, 0.2) 0%,
+      rgba(13, 17, 23, 0.4) 35%,
+      rgba(13, 17, 23, 0.8) 65%,
+      rgba(13, 17, 23, 0.98) 100%
+    );
+  }
 
   .hero__content {
-    padding-bottom: var(--space-12);
-  }
-
-  .hero__ctas {
+    position: relative;
+    z-index: 2;
+    padding-inline: var(--container-pad);
+    padding-bottom: 0;
+    display: flex;
     flex-direction: column;
-  }
-  .hero__ctas .btn {
     width: 100%;
   }
 
-  .feature-section {
-    min-height: 80svh;
+  .hero__brand-tag {
+    align-self: flex-start;
+    margin-bottom: var(--space-3);
+    font-size: 10px;
+    padding: 5px 12px;
   }
+
+  .hero__title {
+    font-size: clamp(38px, 12vw, 54px);
+    line-height: 0.94;
+    letter-spacing: -0.025em;
+    margin-bottom: var(--space-3);
+  }
+
+  .hero__subtitle {
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: var(--space-5);
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .hero__ctas {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    margin-bottom: var(--space-5);
+  }
+
+  .hero__ctas .btn {
+    width: 100%;
+    justify-content: center;
+    padding: 13px 20px;
+    font-size: 14px;
+  }
+
+  /* Structured 2x2 Stats Card for Mobile */
+  .hero__stats {
+    position: static;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    padding: 14px 12px;
+    background: rgba(22, 27, 34, 0.8);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 14px;
+  }
+
+  .hero__stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 6px 8px;
+    border: none;
+  }
+
+  .hero__stat:nth-child(1),
+  .hero__stat:nth-child(2) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 10px;
+  }
+
+  .hero__stat:nth-child(odd) {
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .hero__stat-value {
+    font-size: 18px;
+    font-weight: 700;
+    color: #ffffff;
+  }
+
+  .hero__stat-label {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: 0.08em;
+    margin-top: 2px;
+  }
+
+  /* ── 3. Trust Bar Mobile Grid ── */
+  .trust-bar__inner {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-6);
+    text-align: center;
+  }
+
+  .trust-item__num {
+    font-size: clamp(24px, 6vw, 32px);
+  }
+
+  .trust-item__label {
+    font-size: 11px;
+  }
+
+  /* ── 4. Feature Sections Mobile Aspect-Ratio Framing ── */
+  .feature-section {
+    min-height: 560px;
+    height: auto;
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+    overflow: hidden;
+    padding-top: 90px;
+    padding-bottom: var(--space-10);
+  }
+
+  .feature-section__bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transform: none !important;
+  }
+
+  #bg-alloy {
+    background-image: url('../assets/images/hero/titan-x-hero.jpg');
+    background-position: 55% center;
+  }
+
+  #bg-range {
+    background-image: url('../assets/images/nav/fast-charger.jpg');
+    background-position: center 35%;
+  }
+
+  #bg-utility {
+    background-image: url('../assets/images/shop/accessories/rooftop-tent.jpg');
+    background-position: 50% center;
+  }
+
+  .feature-section__overlay,
+  .feature-section--right .feature-section__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(13, 17, 23, 0.25) 0%,
+      rgba(13, 17, 23, 0.65) 45%,
+      rgba(13, 17, 23, 0.95) 90%,
+      rgba(13, 17, 23, 1) 100%
+    );
+  }
+
+  .feature-section__content,
   .feature-section--right .feature-section__content {
+    position: relative;
+    z-index: 3;
+    max-width: 100%;
+    width: 100%;
     margin-left: 0;
     text-align: left;
+    padding-inline: var(--container-pad);
+    padding-bottom: 0;
   }
-  .feature-section--right .feature-section__overlay {
-    background: linear-gradient(
-      to bottom,
-      transparent 0%,
-      hsla(220, 30%, 6%, 0.85) 60%
-    );
+
+  .feature-section__tag {
+    font-size: 10px;
+    margin-bottom: var(--space-2);
   }
-  .feature-section__overlay {
-    background: linear-gradient(
-      to bottom,
-      transparent 0%,
-      hsla(220, 30%, 6%, 0.85) 60%
-    );
+
+  .feature-section__title {
+    font-size: clamp(28px, 8vw, 40px);
+    line-height: 1.1;
+    margin-bottom: var(--space-3);
   }
-  .feature-section__content {
-    padding-bottom: var(--space-8);
-    align-self: flex-end;
+
+  .feature-section__body {
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: var(--space-5);
+    max-width: 100%;
+  }
+
+  .feature-learn-more {
+    font-size: 14px;
+    padding-bottom: 4px;
+  }
+
+  /* ── 5. Specs Section Mobile Layout ── */
+  #specs {
+    padding-block: var(--space-16);
+  }
+
+  .specs__model-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: var(--space-8);
+  }
+
+  .specs__model-tab {
+    flex: 1 1 auto;
+    padding: 9px 14px;
+    font-size: 12px;
+    text-align: center;
   }
 
   .specs__grid {
     grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .specs__category {
+    padding: 20px;
+  }
+
+  /* ── 6. Order / Specialist Section Mobile ── */
+  #order-cta {
+    padding-block: var(--space-16);
+  }
+
+  .order-cta__title {
+    font-size: clamp(26px, 8vw, 38px);
+  }
+
+  .order-cta__sub {
+    font-size: 14px;
   }
 
   .order-cta__buttons {
     flex-direction: column;
     align-items: center;
+    gap: 12px;
+    width: 100%;
   }
+
   .order-cta__buttons .btn {
-    width: min(320px, 100%);
+    width: min(340px, 100%);
+    justify-content: center;
+  }
+
+  /* ── 7. Shop Section Mobile ── */
+  #shop {
+    padding-block: var(--space-16);
   }
 
   .shop__grid {
     grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .shop-card__img-wrap {
+    height: 220px;
   }
 
   .shop-card__actions {
     flex-direction: column;
+    gap: 8px;
   }
 
-  .trust-bar__inner {
-    gap: var(--space-8);
-  }
-  .trust-item {
-    flex: 1 1 45%;
+  .shop-card__actions .btn {
+    width: 100%;
   }
 
-  .footer__grid {
-    grid-template-columns: 1fr;
-    gap: var(--space-8);
+  /* ── 8. Footer Mobile ── */
+  footer {
+    padding-block: var(--space-12) var(--space-8);
   }
+
+  .footer__grid,
+  .footer__grid--custom {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+
+  .footer__brand-desc,
+  .footer__brand-desc--about {
+    max-width: 100%;
+    font-size: 14px;
+  }
+
   .footer__bottom {
     flex-direction: column;
     align-items: flex-start;
-    gap: var(--space-3);
+    gap: var(--space-4);
+    padding-top: var(--space-6);
   }
 
+  /* ── 9. Safe Area Padding for Floating Action Button ── */
   #chat-fab {
-    bottom: 20px;
-    right: 20px;
-    width: 50px;
-    height: 50px;
+    bottom: max(20px, env(safe-area-inset-bottom, 20px));
+    right: max(20px, env(safe-area-inset-right, 20px));
+    width: 52px;
+    height: 52px;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.45);
   }
-
-  .specs__model-tabs { gap: var(--space-2); }
-  .specs__model-tab { padding: 7px 14px; font-size: 12px; }
 }
 
-/* ── Very small (≤ 380px) ── */
+/* ── Ultra-Compact Screens (≤ 380px) ── */
 @media (max-width: 380px) {
-  .hero__title { font-size: 42px; }
-  .shop__tab { padding: 7px 12px; font-size: 12px; }
+  .hero__title { font-size: 34px; }
+  .shop__tab { padding: 6px 10px; font-size: 11px; }
+  .specs__model-tab { font-size: 11px; padding: 7px 10px; }
+  .hero__stat-value { font-size: 16px; }
+  .hero__stat-label { font-size: 9px; }
 }
 
-/* ── Reduced motion ── */
+/* ── Mobile Landscape (max-height: 500px and orientation: landscape) ── */
+@media (max-height: 500px) and (orientation: landscape) {
+  #hero {
+    min-height: 120svh;
+    padding-top: 70px;
+  }
+  .feature-section {
+    min-height: 120svh;
+    padding-top: 70px;
+  }
+}
+
+/* ── Reduced Motion ── */
 @media (prefers-reduced-motion: reduce) {
   .reveal {
     opacity: 1;
