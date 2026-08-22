@@ -1,12 +1,12 @@
-﻿/* ============================================================
-   AxisEV â€” Main JavaScript
+/* ============================================================
+   AxisEV — Main JavaScript
    js/main.js
    ============================================================ */
 
 (function () {
   'use strict';
 
-  /* â”€â”€ Utils â”€â”€ */
+  /* ── Utils ── */
   const $ = (sel, ctx = document) => ctx.querySelector(sel);
   const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
 
@@ -20,7 +20,64 @@
   }
   window.Utils = { showToast };
 
-  /* â”€â”€ Promo Banner dismiss â”€â”€ */
+  /* ── WhatsApp Redirect Logic ── */
+  const WHATSAPP_NUMBER = '13059950245';
+  const WHATSAPP_MESSAGE = encodeURIComponent('Hello, I am interested in AxisEV vehicles.');
+
+  function redirectToWhatsApp(e) {
+    if (e) e.preventDefault();
+    window.open('https://wa.me/' + WHATSAPP_NUMBER + '?text=' + WHATSAPP_MESSAGE, '_blank', 'noopener');
+  }
+
+  // Attach WhatsApp redirect to all CTAs & Chat FAB
+  ['hero-enquire-btn', 'cta-enquire-btn', 'cta-drive-btn', 'specs-enquire-btn', 'chat-fab'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('click', redirectToWhatsApp);
+  });
+
+  ['mm-order-RWD Electric Truck', 'mm-order-AWD Electric Truck', 'mm-order-apex', 'mm-order-apex-xl'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('click', redirectToWhatsApp);
+  });
+
+  // Shop vehicle enquire buttons
+  $$('.shop-card__btn').forEach(btn => {
+    if (btn.textContent.trim() === 'Add to Cart') {
+      btn.addEventListener('click', () => showToast('Added to enquiry list!'));
+    } else {
+      btn.addEventListener('click', redirectToWhatsApp);
+    }
+  });
+
+  // Mega menu and Nav action toasts
+  $$('[data-toast]').forEach(el => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      showToast(el.getAttribute('data-toast'));
+    });
+  });
+
+  /* ── Disclaimer Modal ── */
+  const disclaimerModal = $('#disclaimer-modal');
+  const openDisclaimerBtns = $$('.open-disclaimer-btn');
+  const closeDisclaimerBtn = $('#disclaimer-close-btn');
+
+  openDisclaimerBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (disclaimerModal && typeof disclaimerModal.showModal === 'function') {
+        disclaimerModal.showModal();
+      }
+    });
+  });
+
+  if (closeDisclaimerBtn && disclaimerModal) {
+    closeDisclaimerBtn.addEventListener('click', () => {
+      disclaimerModal.close();
+    });
+  }
+
+  /* ── Promo Banner dismiss ── */
   const promoClose = $('#promo-close');
   const promoBanner = $('#promo-banner');
   if (promoClose && promoBanner) {
@@ -33,7 +90,7 @@
     });
   }
 
-  /* â”€â”€ Nav scroll behaviour â”€â”€ */
+  /* ── Nav scroll behaviour ── */
   const nav = $('#main-nav');
   let lastScroll = 0;
   function onScroll() {
@@ -50,32 +107,31 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  /* â”€â”€ Mobile menu â”€â”€ */
+  /* ── Mobile menu ── */
   const hamburger = $('#nav-hamburger');
   const mobileMenu = $('#mobile-menu');
   const overlay = $('#nav-overlay');
 
   function closeMobile() {
-    hamburger.classList.remove('is-open');
-    hamburger.setAttribute('aria-expanded', 'false');
-    mobileMenu.classList.remove('is-open');
-    overlay.classList.remove('is-visible');
+    hamburger?.classList.remove('is-open');
+    hamburger?.setAttribute('aria-expanded', 'false');
+    mobileMenu?.classList.remove('is-open');
+    overlay?.classList.remove('is-visible');
     document.body.style.overflow = '';
   }
 
   hamburger?.addEventListener('click', () => {
     const open = hamburger.classList.toggle('is-open');
     hamburger.setAttribute('aria-expanded', open);
-    mobileMenu.classList.toggle('is-open', open);
-    overlay.classList.toggle('is-visible', open);
+    mobileMenu?.classList.toggle('is-open', open);
+    overlay?.classList.toggle('is-visible', open);
     document.body.style.overflow = open ? 'hidden' : '';
   });
 
   overlay?.addEventListener('click', closeMobile);
-
   $$('.nav__mobile-link').forEach(l => l.addEventListener('click', closeMobile));
 
-  /* â”€â”€ Mega Menu â”€â”€ */
+  /* ── Mega Menu ── */
   const backdrop = $('.mega-menu-backdrop');
   let activeMenu = null;
   let hideTimer = null;
@@ -88,7 +144,7 @@
     const menu = $(`#mega-${key}`);
     if (!menu) return;
     menu.classList.add('is-open');
-    backdrop.classList.add('is-visible');
+    backdrop?.classList.add('is-visible');
     $$('.nav__item').forEach(i => i.classList.remove('active'));
     $(`.nav__item[data-menu="${key}"]`)?.classList.add('active');
   }
@@ -96,7 +152,7 @@
   function closeMega(instant = false) {
     const close = () => {
       $$('.mega-menu').forEach(m => m.classList.remove('is-open'));
-      backdrop.classList.remove('is-visible');
+      backdrop?.classList.remove('is-visible');
       $$('.nav__item').forEach(i => i.classList.remove('active'));
       activeMenu = null;
     };
@@ -116,7 +172,7 @@
 
   backdrop?.addEventListener('click', () => closeMega(true));
 
-  /* â”€â”€ Hero BG parallax load â”€â”€ */
+  /* ── Hero BG parallax load ── */
   const heroBg = $('#hero-bg');
   if (heroBg) {
     window.addEventListener('load', () => heroBg.classList.add('loaded'));
@@ -126,7 +182,7 @@
     }, { passive: true });
   }
 
-  /* â”€â”€ Reveal on scroll â”€â”€ */
+  /* ── Reveal on scroll ── */
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
@@ -138,28 +194,34 @@
 
   $$('.reveal').forEach(el => revealObserver.observe(el));
 
-  /* â”€â”€ Specs tabs â”€â”€ */
+  /* ── Specs tabs ── */
   const specData = {
     'forge-pro': {
-      label: 'Forge Pro Â· Dual Motor AWD',
-      rows: { Performance: { '0â€“60 mph': '4.1 sec', 'Top Speed': '112 mph', 'Peak Power': '600 hp' },
-               'Range & Charging': { 'Range (est.)': '325 mi', 'Fast Charge Speed': '250 kW', 'Miles in 15 min': '136 mi' },
-               Drivetrain: { Motor: 'Dual Electric', Drive: 'All-Wheel Drive', 'Tow Capacity': '11,000 lbs' },
-               Dimensions: { 'Overall Length': '223"', 'Width (mirrors in)': '95"', 'Bed Dimensions': '6\'Ã—4\'Ã—1.7\'' } }
+      label: 'Cybertruck All-Wheel Drive · Dual Motor AWD',
+      rows: {
+        Performance: { '0–60 mph': '4.1 sec', 'Top Speed': '112 mph', 'Peak Power': '600 hp' },
+        'Range & Charging': { 'Range (est.)': '325 mi', 'Fast Charge Speed': '250 kW', 'Miles in 15 min': '136 mi' },
+        Drivetrain: { Motor: 'Dual Electric', Drive: 'All-Wheel Drive', 'Tow Capacity': '11,000 lbs' },
+        Dimensions: { 'Overall Length': '223"', 'Width (mirrors in)': '95"', 'Bed Dimensions': "6'×4'×1.7'" }
+      }
     },
     'forge-ultra': {
-      label: 'Forge Ultra Â· Tri Motor AWD',
-      rows: { Performance: { '0â€“60 mph': '2.6 sec', 'Top Speed': '130 mph', 'Peak Power': '845 hp' },
-               'Range & Charging': { 'Range (est.)': '320 mi', 'Fast Charge Speed': '250 kW', 'Miles in 15 min': '130 mi' },
-               Drivetrain: { Motor: 'Tri Electric', Drive: 'All-Wheel Drive', 'Tow Capacity': '11,000 lbs' },
-               Dimensions: { 'Overall Length': '223"', 'Width (mirrors in)': '95"', 'Bed Dimensions': '6\'Ã—4\'Ã—1.7\'' } }
+      label: 'Cyberbeast · Tri-Motor AWD',
+      rows: {
+        Performance: { '0–60 mph': '2.6 sec', 'Top Speed': '130 mph', 'Peak Power': '845 hp' },
+        'Range & Charging': { 'Range (est.)': '320 mi', 'Fast Charge Speed': '250 kW', 'Miles in 15 min': '130 mi' },
+        Drivetrain: { Motor: 'Tri Electric', Drive: 'All-Wheel Drive', 'Tow Capacity': '11,000 lbs' },
+        Dimensions: { 'Overall Length': '223"', 'Width (mirrors in)': '95"', 'Bed Dimensions': "6'×4'×1.7'" }
+      }
     },
     'forge': {
-      label: 'Forge Â· Single Motor RWD',
-      rows: { Performance: { '0â€“60 mph': '6.5 sec', 'Top Speed': '100 mph', 'Peak Power': '315 hp' },
-               'Range & Charging': { 'Range (est.)': '250 mi', 'Fast Charge Speed': '200 kW', 'Miles in 15 min': '100 mi' },
-               Drivetrain: { Motor: 'Single Electric', Drive: 'Rear-Wheel Drive', 'Tow Capacity': '7,500 lbs' },
-               Dimensions: { 'Overall Length': '223"', 'Width (mirrors in)': '95"', 'Bed Dimensions': '6\'Ã—4\'Ã—1.7\'' } }
+      label: 'Cybertruck RWD · Rear-Wheel Drive',
+      rows: {
+        Performance: { '0–60 mph': '6.5 sec', 'Top Speed': '100 mph', 'Peak Power': '315 hp' },
+        'Range & Charging': { 'Range (est.)': '250 mi', 'Fast Charge Speed': '200 kW', 'Miles in 10 min': '100 mi' },
+        Drivetrain: { Motor: 'Single Electric', Drive: 'Rear-Wheel Drive', 'Tow Capacity': '7,500 lbs' },
+        Dimensions: { 'Overall Length': '223"', 'Width (mirrors in)': '95"', 'Bed Dimensions': "6'×4'×1.7'" }
+      }
     }
   };
 
@@ -194,7 +256,7 @@
   const firstTab = $('.specs__model-tab.active');
   if (firstTab) renderSpecs(firstTab.dataset.model);
 
-  /* â”€â”€ Shop tabs â”€â”€ */
+  /* ── Shop tabs ── */
   $$('.shop__tab').forEach(tab => {
     tab.addEventListener('click', () => {
       $$('.shop__tab').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
@@ -207,16 +269,12 @@
     });
   });
 
-  /* â”€â”€ Chat FAB (WhatsApp) â”€â”€ */
-  const chatFab = $('#chat-fab');
-  if (chatFab) {
-    /* Chat FAB logic is handled entirely by chat.js now */
-  }
-
-  /* â”€â”€ Smooth anchor scroll â”€â”€ */
+  /* ── Smooth anchor scroll ── */
   $$('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
-      const target = $(a.getAttribute('href'));
+      const href = a.getAttribute('href');
+      if (href === '#' || !href) return;
+      const target = $(href);
       if (!target) return;
       e.preventDefault();
       closeMobile();
@@ -225,6 +283,3 @@
   });
 
 })();
-
-
-

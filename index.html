@@ -9,7 +9,7 @@
   <!-- Security Meta Tags -->
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self';" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self';" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="AxisEV — Drive the Future. Own It Now." />
@@ -160,12 +160,12 @@
     <div class="mega-menu" id="mega-energy">
       <div class="mega-menu__container">
         <div class="mega-menu__grid">
-          <a href="#" class="mega-item" onclick="Utils.showToast('Energy products — speak to a specialist'); return false;">
+          <a href="#" class="mega-item" data-toast="Energy products — speak to a specialist">
             <img src="assets/images/nav/solar-panels.jpg" alt="Solar panels" loading="lazy">
             <h3>Solar Panels</h3>
             <div class="mega-links"><span>Learn</span><span>Enquire</span></div>
           </a>
-          <a href="#" class="mega-item" onclick="Utils.showToast('Energy products — speak to a specialist'); return false;">
+          <a href="#" class="mega-item" data-toast="Energy products — speak to a specialist">
             <img src="assets/images/nav/wall-charger.jpg" alt="Home energy storage" loading="lazy">
             <h3>Home Storage</h3>
             <div class="mega-links"><span>Learn</span><span>Enquire</span></div>
@@ -188,7 +188,7 @@
             <h3>Home Charging</h3>
             <div class="mega-links"><span>Learn</span><span>Shop</span></div>
           </a>
-          <a href="#" class="mega-item" onclick="Utils.showToast('Find a charging station near you'); return false;">
+          <a href="#" class="mega-item" data-toast="Find a charging station near you">
             <img src="assets/images/nav/fast-charger.jpg" alt="Fast charge network" loading="lazy">
             <h3>Fast Charge Network</h3>
             <div class="mega-links"><span>Find</span></div>
@@ -250,10 +250,10 @@
 
     <!-- Right Actions -->
     <div class="nav__actions">
-      <button class="nav__action-btn" aria-label="Help" onclick="Utils.showToast('How can we help? Use the chat button below!')">
+      <button class="nav__action-btn" aria-label="Help" data-toast="How can we help? Use the chat button below!">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
       </button>
-      <button class="nav__action-btn" aria-label="Language" onclick="Utils.showToast('Currently available in English')">
+      <button class="nav__action-btn" aria-label="Language" data-toast="Currently available in English">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
       </button>
       <!-- Hamburger -->
@@ -266,7 +266,7 @@
     <div class="nav__mobile-menu" id="mobile-menu" role="dialog" aria-label="Navigation menu">
       <nav class="nav__mobile-links">
         <a href="#specs" class="nav__mobile-link">Vehicles</a>
-        <a href="#" class="nav__mobile-link" onclick="Utils.showToast('Energy products coming soon'); return false;">Energy</a>
+        <a href="#" class="nav__mobile-link" data-toast="Energy products coming soon">Energy</a>
         <a href="#shop" class="nav__mobile-link">Charging</a>
         <a href="#hero" class="nav__mobile-link">Discover</a>
         <a href="#shop" class="nav__mobile-link">Shop</a>
@@ -480,7 +480,7 @@
             <span class="shop-card__price-lease">or from $600/mo</span>
           </div>
           <div class="shop-card__actions">
-            <button class="btn btn--primary shop-card__btn" onclick="document.getElementById('chat-fab').click()">Enquire</button>
+            <button class="btn btn--primary shop-card__btn">Enquire</button>
             <a href="#specs" class="btn btn--secondary shop-card__btn">View Specs</a>
           </div>
         </div>
@@ -506,7 +506,7 @@
             <span class="shop-card__price-lease">or from $790/mo</span>
           </div>
           <div class="shop-card__actions">
-            <button class="btn btn--primary shop-card__btn" onclick="document.getElementById('chat-fab').click()">Enquire</button>
+            <button class="btn btn--primary shop-card__btn">Enquire</button>
             <a href="#specs" class="btn btn--secondary shop-card__btn">View Specs</a>
           </div>
         </div>
@@ -531,7 +531,7 @@
             <span class="shop-card__price-lease">or from $990/mo</span>
           </div>
           <div class="shop-card__actions">
-            <button class="btn btn--primary shop-card__btn" onclick="document.getElementById('chat-fab').click()">Enquire</button>
+            <button class="btn btn--primary shop-card__btn">Enquire</button>
             <a href="#specs" class="btn btn--secondary shop-card__btn">View Specs</a>
           </div>
         </div>
@@ -556,7 +556,7 @@
             <span class="shop-card__price-lease">or from $480/mo</span>
           </div>
           <div class="shop-card__actions">
-            <button class="btn btn--primary shop-card__btn" onclick="document.getElementById('chat-fab').click()">Enquire</button>
+            <button class="btn btn--primary shop-card__btn">Enquire</button>
             <a href="#specs" class="btn btn--secondary shop-card__btn">View Specs</a>
           </div>
         </div>
@@ -581,7 +581,7 @@
             <span class="shop-card__price-lease">or from $850/mo</span>
           </div>
           <div class="shop-card__actions">
-            <button class="btn btn--primary shop-card__btn" onclick="document.getElementById('chat-fab').click()">Enquire</button>
+            <button class="btn btn--primary shop-card__btn">Enquire</button>
             <a href="#specs" class="btn btn--secondary shop-card__btn">View Specs</a>
           </div>
         </div>
@@ -602,7 +602,7 @@
             <span class="shop-card__price-main">$2,975</span>
           </div>
           <div class="shop-card__actions">
-            <button class="btn btn--primary shop-card__btn btn--full" onclick="Utils.showToast('Added to enquiry list!')">Add to Cart</button>
+            <button class="btn btn--primary shop-card__btn btn--full" data-toast="Added to enquiry list!">Add to Cart</button>
           </div>
         </div>
       </article>
@@ -617,7 +617,7 @@
             <span class="shop-card__price-main">$6,000</span>
           </div>
           <div class="shop-card__actions">
-            <button class="btn btn--primary shop-card__btn btn--full" onclick="Utils.showToast('Added to enquiry list!')">Add to Cart</button>
+            <button class="btn btn--primary shop-card__btn btn--full" data-toast="Added to enquiry list!">Add to Cart</button>
           </div>
         </div>
       </article>
@@ -632,7 +632,7 @@
             <span class="shop-card__price-main">$800</span>
           </div>
           <div class="shop-card__actions">
-            <button class="btn btn--primary shop-card__btn btn--full" onclick="Utils.showToast('Added to enquiry list!')">Add to Cart</button>
+            <button class="btn btn--primary shop-card__btn btn--full" data-toast="Added to enquiry list!">Add to Cart</button>
           </div>
         </div>
       </article>
@@ -651,7 +651,7 @@
             <span class="shop-card__price-main">$60</span>
           </div>
           <div class="shop-card__actions">
-            <button class="btn btn--primary shop-card__btn btn--full" onclick="Utils.showToast('Added to cart!')">Add to Cart</button>
+            <button class="btn btn--primary shop-card__btn btn--full" data-toast="Added to cart!">Add to Cart</button>
           </div>
         </div>
       </article>
@@ -670,7 +670,7 @@
             <span class="shop-card__price-main">$595</span>
           </div>
           <div class="shop-card__actions">
-            <button class="btn btn--primary shop-card__btn btn--full" onclick="Utils.showToast('Added to enquiry list!')">Add to Cart</button>
+            <button class="btn btn--primary shop-card__btn btn--full" data-toast="Added to enquiry list!">Add to Cart</button>
           </div>
         </div>
       </article>
@@ -713,7 +713,7 @@
         <div class="footer__col-links">
           <a href="legal.html#privacy">Privacy Policy</a>
           <a href="legal.html#terms">Terms of Service</a>
-          <a href="#" onclick="document.getElementById('disclaimer-modal').showModal(); return false;" style="color: var(--teal); font-weight: 600;">Disclaimer</a>
+          <a href="#" class="open-disclaimer-btn" style="color: var(--teal); font-weight: 600;">Disclaimer</a>
         </div>
       </div>
     </div>
@@ -722,7 +722,7 @@
       <div class="footer__legal">
         <a href="legal.html#privacy">Privacy</a>
         <a href="legal.html#terms">Terms</a>
-        <a href="#" onclick="document.getElementById('disclaimer-modal').showModal(); return false;">Disclaimer</a>
+        <a href="#" class="open-disclaimer-btn">Disclaimer</a>
       </div>
     </div>
   </footer>
@@ -736,7 +736,7 @@
     </p>
     <div style="display: flex; justify-content: flex-end; gap: 12px;">
       <a href="legal.html" style="padding: 10px 16px; text-decoration: none; color: #0D1117; font-weight: 600; font-size: 14px;">Read Full Legal</a>
-      <button onclick="document.getElementById('disclaimer-modal').close()" style="background: #0D1117; color: white; border: none; padding: 10px 20px; border-radius: 8px; font-weight: 600; cursor: pointer;">I Understand</button>
+      <button id="disclaimer-close-btn" style="background: #0D1117; color: white; border: none; padding: 10px 20px; border-radius: 8px; font-weight: 600; cursor: pointer;">I Understand</button>
     </div>
   </dialog>
 
@@ -748,34 +748,7 @@
     <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
   </button>
   <script src="js/main.js" defer></script>
-  <script>
-    /* WhatsApp Redirect Logic */
-    const WHATSAPP_NUMBER = '13059950245';
-    const WHATSAPP_MESSAGE = encodeURIComponent('Hello, I am interested in AxisEV vehicles.');
-    
-    function redirectToWhatsApp(e) {
-      if (e) e.preventDefault();
-      window.open('https://wa.me/' + WHATSAPP_NUMBER + '?text=' + WHATSAPP_MESSAGE, '_blank', 'noopener');
-    }
-
-    // 1. Core CTA Buttons
-    ['hero-enquire-btn','cta-enquire-btn','cta-drive-btn','specs-enquire-btn', 'chat-fab'].forEach(id => {
-      const el = document.getElementById(id);
-      if (el) el.addEventListener('click', redirectToWhatsApp);
-    });
-
-    // 2. Mega menu enquire spans
-    ['mm-order-RWD Electric Truck','mm-order-AWD Electric Truck','mm-order-apex','mm-order-apex-xl'].forEach(id => {
-      const el = document.getElementById(id);
-      if (el) el.addEventListener('click', redirectToWhatsApp);
-    });
-
-    // 3. Shop Card buttons (Order Now)
-    document.querySelectorAll('.shop-card__btn').forEach(btn => {
-      btn.addEventListener('click', redirectToWhatsApp);
-    });
-  </script>
-</body>
+  </body>
 </html>
 
 
