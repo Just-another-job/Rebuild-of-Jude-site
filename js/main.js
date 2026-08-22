@@ -288,14 +288,10 @@
 
   backdrop?.addEventListener('click', () => closeMega(true));
 
-  /* ── Hero BG Parallax Load ── */
+  /* ── Hero BG Ready ── */
   const heroBg = $('#hero-bg');
   if (heroBg) {
     window.addEventListener('load', () => heroBg.classList.add('loaded'));
-    window.addEventListener('scroll', () => {
-      const y = window.scrollY;
-      heroBg.style.transform = `scale(1) translateY(${y * 0.25}px)`;
-    }, { passive: true });
   }
 
   /* ── Reveal on Scroll ── */

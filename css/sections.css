@@ -19,11 +19,7 @@
   background-image: url('../assets/images/hero/cybertruck-evening.jpg');
   background-size: cover;
   background-position: center 30%;
-  transform: scale(1.04);
-  transition: transform 12s linear;
-  will-change: transform;
 }
-.hero__bg.loaded { transform: scale(1); }
 
 .hero__gradient {
   position: absolute;
