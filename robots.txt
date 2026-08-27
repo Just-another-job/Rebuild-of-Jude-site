@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /agent/
 
-Sitemap: https://edgesync.pages.dev/sitemap.xml
+Sitemap: https://axisev.pages.dev/sitemap.xml
