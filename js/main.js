@@ -23,7 +23,10 @@
   /* ── Master WhatsApp Redirect Engine ── */
   const WHATSAPP_NUMBER = '13059950245';
 
-  function openWhatsApp(customMsg) {
+  function openWhatsApp(customMsg, context = 'WhatsApp Direct CTA') {
+    if (window.SiteTracker && typeof window.SiteTracker.trackWhatsAppClick === 'function') {
+      window.SiteTracker.trackWhatsAppClick(customMsg, context);
+    }
     const text = encodeURIComponent(customMsg || 'Hello, I am interested in AxisEV vehicles.');
     window.open('https://wa.me/' + WHATSAPP_NUMBER + '?text=' + text, '_blank', 'noopener');
   }
@@ -34,7 +37,7 @@
   if (chatFab) {
     chatFab.addEventListener('click', (e) => {
       e.preventDefault();
-      openWhatsApp('Hello, I would like to speak with an AxisEV support specialist.');
+      openWhatsApp('Hello, I would like to speak with an AxisEV support specialist.', 'Floating WhatsApp FAB');
     });
   }
 
@@ -43,7 +46,7 @@
   if (promoCtaBtn) {
     promoCtaBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      openWhatsApp('Hello, I would like to get an exclusive trade-in estimate for my current vehicle.');
+      openWhatsApp('Hello, I would like to get an exclusive trade-in estimate for my current vehicle.', 'Top Promo Banner - Trade-In');
     });
   }
 
@@ -52,7 +55,7 @@
   if (helpBtn) {
     helpBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      openWhatsApp('Hello, I need assistance and would like to speak to an AxisEV specialist.');
+      openWhatsApp('Hello, I need assistance and would like to speak to an AxisEV specialist.', 'Nav Action - Help');
     });
   }
 
@@ -61,7 +64,7 @@
   if (heroEnquire) {
     heroEnquire.addEventListener('click', (e) => {
       e.preventDefault();
-      openWhatsApp('Hello, I would like to enquire about the Cybertruck.');
+      openWhatsApp('Hello, I would like to enquire about the Cybertruck.', 'Hero Section - Enquire Cybertruck');
     });
   }
 
@@ -71,7 +74,7 @@
       e.preventDefault();
       const parentSection = link.closest('section');
       const title = parentSection ? (parentSection.querySelector('.feature-section__title')?.textContent.replace(/\s+/g, ' ').trim() || 'AxisEV Technology') : 'AxisEV Technology';
-      openWhatsApp('Hello, I would like to learn more about ' + title + '.');
+      openWhatsApp('Hello, I would like to learn more about ' + title + '.', 'Feature Section - ' + title);
     });
   });
 
@@ -81,7 +84,7 @@
     specsEnquire.addEventListener('click', (e) => {
       e.preventDefault();
       const modelTitle = $('#specs-subtitle')?.textContent.trim() || 'AxisEV Model';
-      openWhatsApp('Hello, I would like to enquire about the ' + modelTitle + ' specifications.');
+      openWhatsApp('Hello, I would like to enquire about the ' + modelTitle + ' specifications.', 'Specs Section - ' + modelTitle);
     });
   }
 
@@ -90,7 +93,7 @@
   if (ctaEnquire) {
     ctaEnquire.addEventListener('click', (e) => {
       e.preventDefault();
-      openWhatsApp('Hello, I would like to connect with an AxisEV specialist regarding vehicle referral pricing.');
+      openWhatsApp('Hello, I would like to connect with an AxisEV specialist regarding vehicle referral pricing.', 'Contact Section - Enquire Referral');
     });
   }
 
@@ -98,7 +101,7 @@
   if (ctaDrive) {
     ctaDrive.addEventListener('click', (e) => {
       e.preventDefault();
-      openWhatsApp('Hello, I would like to book an electric vehicle test drive.');
+      openWhatsApp('Hello, I would like to book an electric vehicle test drive.', 'Contact Section - Book Test Drive');
     });
   }
 
@@ -112,9 +115,9 @@
       btn.addEventListener('click', (e) => {
         e.preventDefault();
         if (isVehicle) {
-          openWhatsApp('Hello, I am interested in inquiring about the ' + name + '.');
+          openWhatsApp('Hello, I am interested in inquiring about the ' + name + '.', 'Shop Vehicle - ' + name);
         } else {
-          openWhatsApp('Hello, I would like to order the ' + name + '.');
+          openWhatsApp('Hello, I would like to order the ' + name + '.', 'Shop Product - ' + name);
         }
       });
     }
@@ -132,7 +135,7 @@
         enquireSpan.addEventListener('click', (e) => {
           e.preventDefault();
           e.stopPropagation();
-          openWhatsApp('Hello, I would like to enquire about ' + title + '.');
+          openWhatsApp('Hello, I would like to enquire about ' + title + '.', 'Mega Menu Card - ' + title);
         });
       }
     });
@@ -142,7 +145,7 @@
       link.addEventListener('click', (e) => {
         e.preventDefault();
         const text = link.textContent.trim();
-        openWhatsApp('Hello, I am interested in: ' + text + '.');
+        openWhatsApp('Hello, I am interested in: ' + text + '.', 'Mega Menu Link - ' + text);
       });
     });
   });
@@ -152,7 +155,7 @@
     link.addEventListener('click', (e) => {
       e.preventDefault();
       const text = link.textContent.trim();
-      openWhatsApp('Hello, I would like to enquire about: ' + text + '.');
+      openWhatsApp('Hello, I would like to enquire about: ' + text + '.', 'Footer Link - ' + text);
     });
   });
 
@@ -243,7 +246,7 @@
     l.addEventListener('click', (e) => {
       e.preventDefault();
       closeMobile();
-      openWhatsApp('Hello, I would like to contact an AxisEV specialist.');
+      openWhatsApp('Hello, I would like to contact an AxisEV specialist.', 'Mobile Menu - Contact Link');
     });
   });
 
